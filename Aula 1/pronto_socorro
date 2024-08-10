@@ -1,0 +1,17 @@
+@startuml
+|Atendente|
+start
+:Receber paciente;
+:Registrar dados e queixa;
+|Enfermeiro|
+:Encaminhar para medição de pressão e temperatura;
+|Médico|
+:Realizar consulta médica;
+:Preencher prontuário;
+:Identificar problema;
+if (Necessário internação?) then (Sim)
+  :Encaminhar para internação;
+else (Não)
+endif
+stop
+@enduml
