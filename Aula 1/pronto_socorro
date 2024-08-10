@@ -1,17 +1,31 @@
 @startuml
-|Atendente|
-start
-:Receber paciente;
-:Registrar dados e queixa;
-|Enfermeiro|
-:Encaminhar para medição de pressão e temperatura;
-|Médico|
-:Realizar consulta médica;
-:Preencher prontuário;
-:Identificar problema;
-if (Necessário internação?) then (Sim)
-  :Encaminhar para internação;
-else (Não)
-endif
-stop
+left to right direction
+
+actor "Atendente" as a1
+actor "Enfermeiro" as a2
+actor "Médico" as a3
+actor "Paciente" as a4
+
+rectangle "ATENDIMENTO PRONTO SOCORRO" as Sistema {
+
+ usecase "Receber Paciente" as uc1
+ usecase "Registra paciente e queixas" as uc2
+ usecase "Encaminhado para triagem" as uc3
+ usecase "Consulta" as uc4
+ usecase "Identifica o problema" as uc5
+ usecase "Internação" as uc6
+
+ a1 ..> uc1 : <<include>>
+ uc1 ..> uc2 : <<include>>
+ uc2 ..> a2 : <<include>>
+ a2 ..> uc3 : <<include>>
+ uc3 ..> uc4 : <<include>>
+ uc4 ..> a3 : <<include>>
+ a3 ..> uc5 : <<include>>
+ a3 ..> uc6 : <<extend>>
+ 
+ a4 ..> uc4 : <<include>>
+ 
+ 
+ }
 @enduml
