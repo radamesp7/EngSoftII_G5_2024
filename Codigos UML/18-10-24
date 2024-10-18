@@ -1,0 +1,82 @@
+Modelo de caso de uso:
+
+@startuml
+actor Usuario
+actor Motorista
+actor Sistema
+
+Usuario --> (Cadastro de Usuário)
+Usuario --> (Solicitar Corrida)
+Motorista --> (Aceitar Corrida)
+Motorista --> (Iniciar Corrida)
+Motorista --> (Finalizar Corrida)
+Usuario --> (Avaliar Corrida)
+Sistema --> (Processar Pagamento)
+Usuario --> (Visualizar Histórico de Corridas)
+
+@enduml
+
+
+Modelo de dominio:
+
+@startuml
+class Usuario {
+    +id: int
+    +nome: String
+    +telefone: String
+    +email: String
+    +senha: String
+    +formaPagamento: String
+    +cadastrar()
+    +solicitarCorrida()
+    +avaliarCorrida()
+    +visualizarHistorico()
+}
+
+class Motorista {
+    +id: int
+    +nome: String
+    +telefone: String
+    +veículo: String
+    +avaliacao: float
+    +aceitarCorrida()
+    +iniciarCorrida()
+    +finalizarCorrida()
+}
+
+class Corrida {
+    +id: int
+    +localColeta: String
+    +destino: String
+    +status: String
+    +preco: float
+    +dataHora: Date
+    +calcularPreco()
+    +atualizarStatus()
+}
+
+class Pagamento {
+    +id: int
+    +idCorrida: int
+    +valor: float
+    +formaPagamento: String
+    +status: String
+    +processar()
+}
+
+class HistoricoDeCorridas {
+    +id: int
+    +idUsuario: int
+    +listaCorridas: List<Corrida>
+    +adicionarCorrida()
+    +visualizarDetalhes()
+}
+
+Usuario "1" -- "N" Corrida : "solicita"
+Motorista "1" -- "N" Corrida : "aceita"
+Corrida "1" -- "1" Pagamento : "está associado a"
+HistoricoDeCorridas "1" -- "1" Usuario : "possui"
+
+@enduml
+
+
