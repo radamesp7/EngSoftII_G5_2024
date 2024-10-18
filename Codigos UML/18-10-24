@@ -78,5 +78,3 @@ Corrida "1" -- "1" Pagamento : "está associado a"
 HistoricoDeCorridas "1" -- "1" Usuario : "possui"
 
 @enduml
-
-
