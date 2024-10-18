@@ -78,3 +78,58 @@ Corrida "1" -- "1" Pagamento : "está associado a"
 HistoricoDeCorridas "1" -- "1" Usuario : "possui"
 
 @enduml
+
+
+Caso de uso: Solicitar Corrida
+
+@startuml
+|Usuário|
+start
+:Abrir o aplicativo;
+:Inserir destino;
+|Aplicativo|
+:Obter localização atual;
+:Exibir opções de corrida;
+|Usuário|
+:Selecionar tipo de veículo;
+:Confirmar pedido;
+|Aplicativo|
+:Notificar motoristas próximos;
+|Motorista|
+:Aceitar a corrida;
+|Aplicativo|
+:Enviar notificação ao usuário;
+:Visualizar localização do motorista;
+|Motorista|
+:Notificar chegada ao local;
+|Usuário|
+:Entrar no veículo;
+|Motorista|
+:Iniciar corrida;
+|Aplicativo|
+:Traçar trajeto;
+|Motorista|
+:Chegar ao destino;
+:Finalizar corrida;
+|Aplicativo|
+:Processar pagamento;
+stop
+@enduml
+
+
+Caso de uso: Avaliar Corrida
+
+@startuml
+|Usuário|
+start
+:Chegar ao destino;
+:Sair do veículo;
+:Avaliar experiência;
+|Aplicativo|
+:Inserir avaliação;
+:Enviar avaliação;
+|Aplicativo|
+:Armazenar avaliação;
+:Atualizar histórico de corridas;
+stop
+@enduml
