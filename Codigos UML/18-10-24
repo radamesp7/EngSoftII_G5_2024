@@ -178,6 +178,74 @@ Aplicativo -> Aplicativo: Atualizar histórico de corridas
 @enduml
 
 
+Diagrama modelo Caixa Preta
+
+@startuml
+
+class Usuario {
+    +iniciarSessao()
+    +inserirDestino(destino: String)
+    +selecionarTipoVeiculo(tipo: String)
+    +confirmarPedido()
+    +avaliarExperiencia(nota: int, comentario: String)
+}
+
+class Motorista {
+    +aceitarCorrida(corridaID: int)
+    +notificarChegada()
+    +iniciarCorrida(corridaID: int)
+    +finalizarCorrida(corridaID: int)
+}
+
+class Aplicativo {
+    +obterLocalizacaoAtual(): Coordenadas
+    +exibirOpcoesDeCorrida(opcoes: List<Veiculo>)
+    +notificarMotoristasProximos(corrida: Corrida)
+    +enviarNotificacao(usuarioID: int, mensagem: String)
+    +processarPagamento(corridaID: int, metodoPagamento: String)
+    +armazenarAvaliacao(avaliacao: Avaliacao)
+    +atualizarHistoricoDeCorridas(usuarioID: int)
+    +tracarTrajeto(origem: Coordenadas, destino: Coordenadas): Rota
+}
+
+class Corrida {
+    +id: int
+    +status: String
+    +origem: Coordenadas
+    +destino: Coordenadas
+    +veiculo: Veiculo
+    +iniciar()
+    +finalizar()
+}
+
+class Avaliacao {
+    +nota: int
+    +comentario: String
+    +registrar()
+}
+
+class Veiculo {
+    +id: int
+    +tipo: String
+    +localizacaoAtual: Coordenadas
+    +disponibilidade: Boolean
+}
+
+class Coordenadas {
+    +latitude: float
+    +longitude: float
+}
+
+class Rota {
+    +caminho: List<Coordenadas>
+    +distancia: float
+    +tempoEstimado: float
+}
+
+@enduml
+
+
+
 
 
 Alguma coisa q a gente já n lembra https://dontpad.com/corotecom51
