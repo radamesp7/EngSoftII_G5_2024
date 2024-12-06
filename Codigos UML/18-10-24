@@ -135,5 +135,49 @@ stop
 @enduml
 
 
+Diagrama de sequencia: Solicitar Corrida
+
+@startuml
+actor Usuário
+actor Motorista
+boundary Aplicativo
+
+Usuário -> Aplicativo: Abrir o aplicativo
+Usuário -> Aplicativo: Inserir destino
+Aplicativo -> Aplicativo: Obter localização atual
+Aplicativo -> Usuário: Exibir opções de corrida
+Usuário -> Aplicativo: Selecionar tipo de veículo
+Usuário -> Aplicativo: Confirmar pedido
+Aplicativo -> Motorista: Notificar motoristas próximos
+Motorista -> Aplicativo: Aceitar a corrida
+Aplicativo -> Usuário: Enviar notificação ao usuário
+Usuário -> Aplicativo: Visualizar localização do motorista
+Motorista -> Usuário: Notificar chegada ao local
+Usuário -> Motorista: Entrar no veículo
+Motorista -> Aplicativo: Iniciar corrida
+Aplicativo -> Aplicativo: Traçar trajeto
+Motorista -> Aplicativo: Chegar ao destino
+Motorista -> Aplicativo: Finalizar corrida
+Aplicativo -> Aplicativo: Processar pagamento
+@enduml
+
+
+Diagrama de sequencia: Avaliar Corrida
+
+@startuml
+actor Usuário
+boundary Aplicativo
+
+Usuário -> Aplicativo: Chegar ao destino
+Usuário -> Aplicativo: Sair do veículo
+Usuário -> Aplicativo: Avaliar experiência
+Aplicativo -> Aplicativo: Inserir avaliação
+Usuário -> Aplicativo: Enviar avaliação
+Aplicativo -> Aplicativo: Armazenar avaliação
+Aplicativo -> Aplicativo: Atualizar histórico de corridas
+@enduml
+
+
+
 
 https://dontpad.com/corotecom51
